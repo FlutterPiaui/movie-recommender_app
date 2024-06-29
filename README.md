@@ -1,6 +1,6 @@
 # movie_recommender_app
 
-prototipo
+Wireframe app
 <img src="gemini_app.png" />
 ## Getting Started
 
