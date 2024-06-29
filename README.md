@@ -1,7 +1,7 @@
 # movie_recommender_app
 
-A new Flutter project.
-
+prototipo
+<img src="gemini_app.png" />
 ## Getting Started
 
 This project is a starting point for a Flutter application.
