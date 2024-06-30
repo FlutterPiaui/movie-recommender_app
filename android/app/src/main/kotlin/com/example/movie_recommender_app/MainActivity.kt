@@ -1,4 +1,4 @@
-package com.example.movie_recommender_app
+package org.movierecommenderapp.br
 
 import io.flutter.embedding.android.FlutterActivity
 

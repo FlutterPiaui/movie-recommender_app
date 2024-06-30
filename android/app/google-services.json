@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "630843716019",
+    "project_id": "movie-recommender-51345",
+    "storage_bucket": "movie-recommender-51345.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630843716019:android:f7af547788703f8c355bc6",
+        "android_client_info": {
+          "package_name": "org.movierecommenderapp.br"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqN5JH7ePfe1JCe823kJQtsToUlXwFGKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
