@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_recommender_app/src/di/di_setup.dart';
 import 'package:movie_recommender_app/src/routes/routes.dart';
 
