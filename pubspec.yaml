@@ -41,6 +41,7 @@ dependencies:
   go_router: ^14.2.0
   get_it: ^7.7.0
   flutter_bloc: ^8.1.6
+  dio: ^5.5.0+1
 
 dev_dependencies:
   flutter_test:
