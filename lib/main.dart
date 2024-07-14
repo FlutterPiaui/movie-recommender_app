@@ -8,8 +8,8 @@ import 'package:movie_recommender_app/src/routes/routes.dart';
 
 void main() async {
   await configureDependencies();
-  final deviceLanguage = Platform.localeName.split('_');
-  AppLocalizations.delegate.load(Locale(deviceLanguage[0]));
+  final deviceLanguage = Platform.localeName.split('_')[0];
+  await AppLocalizations.delegate.load(Locale(deviceLanguage));
   runApp(const MyApp());
 }
 
