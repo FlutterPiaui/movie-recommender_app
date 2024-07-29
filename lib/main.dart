@@ -37,6 +37,7 @@ void main() async {
         );
       };
       await configureDependencies();
+      await initDependencies();
       final deviceLanguage = Platform.localeName.split('_')[0];
       await AppLocalizations.delegate.load(Locale(deviceLanguage));
       runApp(const MyApp());
