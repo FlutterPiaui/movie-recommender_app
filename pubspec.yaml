@@ -47,6 +47,7 @@ dependencies:
   pub_semver: ^2.1.4
   url_launcher: ^6.3.0
   firebase_crashlytics: ^4.0.3
+  dartz:
 
 dev_dependencies:
   flutter_test:
