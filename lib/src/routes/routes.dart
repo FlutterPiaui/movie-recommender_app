@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_recommender_app/src/presentation/home/screen/home_screen.dart';
-import 'package:movie_recommender_app/src/presentation/movie_details/screen/movie_details_screen.dart';
-import 'package:movie_recommender_app/src/presentation/recommendations/screen/recommendations_screen.dart';
-import 'package:movie_recommender_app/src/presentation/splash/screen/splash_screen.dart';
+import 'package:movie_recommender_app/src/modules/home/screen/home_screen.dart';
+import 'package:movie_recommender_app/src/modules/movie_details/screen/movie_details_screen.dart';
+import 'package:movie_recommender_app/src/modules/recommendations/presenter/screen/recommendations_screen.dart';
+import 'package:movie_recommender_app/src/modules/splash/screen/splash_screen.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 

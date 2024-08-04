@@ -15,6 +15,23 @@ abstract class Failure implements Exception {
   }
 }
 
+class GetFailureMovies extends Failure {
+  final dynamic exception;
+  final StackTrace? stackTrace;
+  final String? label;
+
+  GetFailureMovies({
+    this.label,
+    this.exception,
+    this.stackTrace,
+    super.errorMessage = 'GetFailureMovies',
+  }) : super(
+          stackTrace: stackTrace,
+          label: label,
+          exception: exception,
+        );
+}
+
 class UnknownError extends Failure {
   final dynamic exception;
   final StackTrace? stackTrace;

@@ -9,17 +9,21 @@ class RecommendationsScreen extends StatefulWidget {
 }
 
 class _RecommendationsScreenState extends State<RecommendationsScreen> {
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Recommendations'),
       ),
-      body: const Center(
-        child: Text(
-          'Recomendações de filmes aqui!',
-        ),
+      body: const Column(
+        children: [
+          Center(
+            child: Text(
+              'Recomendações de filmes aqui!',
+            ),
+          ),
+        ],
       ),
     );
   }

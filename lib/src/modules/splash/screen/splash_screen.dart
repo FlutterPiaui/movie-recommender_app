@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_recommender_app/src/presentation/home/screen/home_screen.dart';
+import 'package:movie_recommender_app/src/modules/home/screen/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash';

@@ -2,11 +2,11 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:movie_recommender_app/src/core/client/api_client.dart';
 
-class EduApiClientDio implements ApiClient {
+class ApiClientDio implements ApiClient {
   final Dio _dio;
 
-  EduApiClientDio(this._dio) {
-    _dio.options.baseUrl = '';
+  ApiClientDio(this._dio) {
+    _dio.options.baseUrl = 'https://api-l7ha4sjina-uc.a.run.app';
   }
 
   @override
