@@ -6,10 +6,9 @@ import 'package:movie_recommender_app/src/core/config/device_info.dart';
 import 'package:movie_recommender_app/src/core/config/remote_config.dart';
 import 'package:movie_recommender_app/src/di/di_setup.dart';
 import 'package:movie_recommender_app/src/utils/dialog_utils.dart';
+import 'package:movie_recommender_app/src/modules/movie_details/presenter/screen/movie_details_screen.dart';
+import 'package:movie_recommender_app/src/modules/recommendations/presenter/screen/recommendations_screen.dart';
 import 'package:pub_semver/pub_semver.dart';
-
-import '../../movie_details/screen/movie_details_screen.dart';
-import '../../recommendations/presenter/screen/recommendations_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
