@@ -32,6 +32,23 @@ class GetFailureMovies extends Failure {
         );
 }
 
+class GetFailureMovieDetails extends Failure {
+  final dynamic exception;
+  final StackTrace? stackTrace;
+  final String? label;
+
+  GetFailureMovieDetails({
+    this.label,
+    this.exception,
+    this.stackTrace,
+    super.errorMessage = 'GetFailureMovieDetails',
+  }) : super(
+          stackTrace: stackTrace,
+          label: label,
+          exception: exception,
+        );
+}
+
 class UnknownError extends Failure {
   final dynamic exception;
   final StackTrace? stackTrace;
