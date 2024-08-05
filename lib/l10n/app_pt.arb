@@ -1,4 +1,9 @@
 {
+    "noResultsForThisSearch": "Não há resultados para essa pesquisa!",
+    "somethingWentWrong": "Algo deu errado!",
+    "whatMovieWeGoWatch": "O que vamos assistir hoje?",
+    "movieName": "Nome do filme",
+    "movieRecommendation": "Recomendação de filme",
     "welcome": "Bem vindo",
     "newVersionAvailable": "Nova versão disponível",
     "install": "Instalar",

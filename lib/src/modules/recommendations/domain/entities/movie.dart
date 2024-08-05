@@ -16,7 +16,7 @@ class Movie {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,
-      'streamingPlatform': streamingPlatform,
+      'streaming_platform': streamingPlatform,
       'image': image,
       'description': description,
     };
@@ -25,7 +25,7 @@ class Movie {
   factory Movie.fromMap(Map<String, dynamic> map) {
     return Movie(
       title: map['title'] as String,
-      streamingPlatform: map['streamingPlatform'] as String,
+      streamingPlatform: map['streaming_platform'] as String,
       image: map['image'] as String,
       description: map['description'] as String,
     );
@@ -33,6 +33,5 @@ class Movie {
 
   String toJson() => json.encode(toMap());
 
-  factory Movie.fromJson(String source) =>
-      Movie.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Movie.fromJson(Map<String, dynamic> json) => Movie.fromMap(json);
 }
