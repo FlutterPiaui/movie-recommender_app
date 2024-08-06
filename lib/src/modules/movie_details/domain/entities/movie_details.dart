@@ -15,7 +15,7 @@ class MovieDetails {
   final String posterPath;
   final List<ProductionCompany> productionCompanies;
   final List<ProductionCountry> productionCountries;
-  final DateTime releaseDate;
+  final DateTime? releaseDate;
   final int revenue;
   final int runtime;
   final List<SpokenLanguage> spokenLanguages;
@@ -44,7 +44,7 @@ class MovieDetails {
     required this.posterPath,
     required this.productionCompanies,
     required this.productionCountries,
-    required this.releaseDate,
+    this.releaseDate,
     required this.revenue,
     required this.runtime,
     required this.spokenLanguages,
@@ -78,7 +78,9 @@ class MovieDetails {
         productionCountries: List<ProductionCountry>.from(
             json["production_countries"]
                 .map((x) => ProductionCountry.fromJson(x))),
-        releaseDate: DateTime.parse(json["release_date"]),
+        releaseDate: json["release_date"].isNotEmpty
+            ? DateTime.parse(json["release_date"])
+            : null,
         revenue: json["revenue"],
         runtime: json["runtime"],
         spokenLanguages: List<SpokenLanguage>.from(
@@ -110,13 +112,13 @@ class Genre {
 
 class ProductionCompany {
   final int id;
-  final String logoPath;
+  final String? logoPath;
   final String name;
   final String originCountry;
 
   ProductionCompany({
     required this.id,
-    required this.logoPath,
+    this.logoPath,
     required this.name,
     required this.originCountry,
   });

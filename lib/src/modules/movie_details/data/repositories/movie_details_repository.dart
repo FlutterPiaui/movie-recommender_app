@@ -15,7 +15,7 @@ class MovieDetailsRepositoryImpl implements MovieDetailsRepository {
   Future<Either<Failure, MovieDetails>> getMovieDetails(
       String movieName) async {
     try {
-      final response = await _apiClient.get(path: '/gemini/$movieName');
+      final response = await _apiClient.get(path: '/movie/$movieName');
       var movie = MovieDetails.fromJson(response.data);
       return right(movie);
     } catch (e) {
