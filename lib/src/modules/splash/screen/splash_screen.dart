@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_recommender_app/src/modules/home/screen/home_screen.dart';
+
+import '../../recommendations/presenter/screen/recommendations_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash';
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(
       const Duration(seconds: 4),
-      () => context.go(HomeScreen.routeName),
+      () => context.go(RecommendationsScreen.routeName),
     );
   }
 

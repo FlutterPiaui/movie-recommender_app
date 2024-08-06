@@ -17,6 +17,7 @@ class AppColors {
   static const Color danger = Color.fromARGB(255, 255, 86, 86);
   static const Color warning = Color.fromARGB(255, 255, 229, 84);
   static const Color neutral = Color(0xFF848484);
+  static const Color shade = Color.fromRGBO(238, 238, 238, 1);
 
   // Cores de texto e ícones
   static const Color onPrimary = Color(0xFFFFFFFF);
