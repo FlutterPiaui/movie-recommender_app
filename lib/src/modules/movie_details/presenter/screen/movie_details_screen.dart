@@ -41,6 +41,11 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           );
         }
         if (state is MovieDetailsSuccessState) {
+          var genres = state.movie.genres;
+          if (state.movie.releaseDate?.year != null) {
+            genres.insert(0, state.movie.releaseDate!.year.toString());
+          }
+
           return Scaffold(
             body: Stack(
               children: [
@@ -61,7 +66,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         child: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
-                          size: 38,
+                          size: 30,
                         ),
                       ),
                     ),
@@ -106,20 +111,23 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                 fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 10),
-                          const Row(
-                            children: [
-                              InfoDetailsMovie(
-                                textInfo: '2022',
-                              ),
-                              SizedBox(width: 12),
-                              InfoDetailsMovie(
-                                textInfo: 'Action',
-                              ),
-                              SizedBox(width: 12),
-                              InfoDetailsMovie(
-                                textInfo: 'USA',
-                              ),
-                            ],
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: 35,
+                            child: ListView(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: state.movie.genres
+                                  .map(
+                                    (genre) => Padding(
+                                      padding: const EdgeInsets.only(right: 8),
+                                      child: InfoDetailsMovie(
+                                        textInfo: genre,
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
                           ),
                           const SizedBox(height: 20),
                           Row(
@@ -132,7 +140,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                       horizontal: 25),
                                 ),
                                 child: const Text(
-                                  'Whatch Now',
+                                  'Whatch Where?',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,

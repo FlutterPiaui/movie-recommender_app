@@ -48,6 +48,12 @@ dependencies:
   url_launcher: ^6.3.0
   firebase_crashlytics: ^4.0.3
   dartz:
+  shimmer: ^3.0.0
+  cached_network_image: ^3.4.0
+  chat_bubbles: ^1.6.0
+  loading_animation_widget: ^1.2.1
+  shared_preferences: ^2.3.1
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

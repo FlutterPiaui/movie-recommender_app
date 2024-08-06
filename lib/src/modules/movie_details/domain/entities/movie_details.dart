@@ -3,7 +3,7 @@ class MovieDetails {
   final String backdropPath;
   final dynamic belongsToCollection;
   final int budget;
-  final List<Genre> genres;
+  final List<String> genres;
   final String homepage;
   final int id;
   final String imdbId;
@@ -62,7 +62,7 @@ class MovieDetails {
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+        genres: List<String>.from(json["genres"].map((x) => x['name'])),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -92,21 +92,6 @@ class MovieDetails {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
         posterUrl: json["poster_url"],
-      );
-}
-
-class Genre {
-  final int id;
-  final String name;
-
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-        id: json["id"],
-        name: json["name"],
       );
 }
 
