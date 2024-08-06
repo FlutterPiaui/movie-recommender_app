@@ -42,7 +42,30 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
           .map((movie) => MovieRequestData.fromMap(movie))
           .toList();
     }
-    _movies = [..._movies, event.movie];
+
+    late MovieRequestData last;
+
+    if (_movies.isEmpty) {
+      _movies = [event.movie];
+    } else {
+      last = _movies.last;
+      _movies.removeWhere(
+        (movie) => movie.movies.isEmpty && movie.error == null,
+      );
+      if (!_movies.contains(event.movie)) {
+        _movies = [
+          ..._movies,
+          last.copyWith(
+            movies: event.movie.movies,
+            error: event.movie.error,
+            prompt: event.movie.prompt,
+          ),
+        ];
+      } else {
+        _movies = [..._movies];
+      }
+    }
+
     await _storage.setItem(
       kMovies,
       jsonEncode([..._movies.map((movie) => movie.toMap())]),
@@ -60,6 +83,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         MoviesErrorState(errorMessage: StackTrace.current.toString()),
       );
     } else {
+      _movies = [];
       emit(MoviesInitialState());
     }
   }

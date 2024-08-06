@@ -3,6 +3,7 @@ import 'package:chat_bubbles/bubbles/bubble_special_three.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:movie_recommender_app/src/modules/recommendations/domain/entities/movie_request_data.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/movies/movies_event.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/search_movies/search_movies_state.dart';
 import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_list_widget.dart';
@@ -72,7 +73,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         children: [
           LoadingAnimationWidget.fourRotatingDots(
             color: theme.colorScheme.onSecondary,
-            size: 60,
+            size: 40,
           ),
         ],
       ),
@@ -113,6 +114,9 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         final search = controller.text;
         if (search.trim().isEmpty) return;
         context.read<SearchMoviesBloc>().add(SearchMovies(search));
+        context.read<MoviesBloc>().add(
+              AddMovie(MovieRequestData(movies: [], prompt: search)),
+            );
         controller.clear();
       },
       icon: Icon(Icons.send, color: theme.colorScheme.onSurface),
@@ -151,6 +155,28 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                           color: theme.scaffoldBackgroundColor,
                         ),
                       );
+                      if (movie.error == null && movie.movies.isEmpty) {
+                        return Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          color: Colors.grey.shade200,
+                          child: Column(
+                            children: [
+                              promptWidget,
+                              const SizedBox(height: 6),
+                              BlocBuilder<SearchMoviesBloc, SearchMoviesState>(
+                                builder: (context, state) {
+                                  if (state is SearchMoviesLoadingState) {
+                                    return loading;
+                                  }
+                                  return const SizedBox();
+                                },
+                              ),
+                              const SizedBox(height: 6),
+                            ],
+                          ),
+                        );
+                      }
                       if (movie.error != null) {
                         return Container(
                           margin: const EdgeInsets.only(top: 10),
@@ -230,12 +256,6 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                 );
               }
 
-              return const SizedBox();
-            },
-          ),
-          BlocBuilder<SearchMoviesBloc, SearchMoviesState>(
-            builder: (context, state) {
-              if (state is SearchMoviesLoadingState) return loading;
               return const SizedBox();
             },
           ),
