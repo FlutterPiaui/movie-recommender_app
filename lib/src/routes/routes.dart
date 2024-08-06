@@ -39,7 +39,9 @@ final router = GoRouter(
     // Others
     GoRoute(
       path: MovieDetailsScreen.routeName,
-      builder: (context, state) => const MovieDetailsScreen(),
+      builder: (context, state) => MovieDetailsScreen(
+        movieName: state.uri.queryParameters['movieName']!,
+      ),
     ),
   ],
 );

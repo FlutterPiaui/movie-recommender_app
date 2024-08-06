@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_recommender_app/src/modules/movie_details/presenter/screen/movie_details_screen.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/domain/entities/movie.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -27,8 +26,7 @@ class MovieListWidget extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.push(
-                        MovieDetailsScreen.routeName,
-                        extra: movies[index],
+                        '/movie-details?movieName=${movies[index].title}',
                       );
                     },
                     child: Container(

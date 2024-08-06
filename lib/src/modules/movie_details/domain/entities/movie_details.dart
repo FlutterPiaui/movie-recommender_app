@@ -3,7 +3,7 @@ class MovieDetails {
   final String backdropPath;
   final dynamic belongsToCollection;
   final int budget;
-  final List<Genre> genres;
+  final List<String> genres;
   final String homepage;
   final int id;
   final String imdbId;
@@ -15,7 +15,7 @@ class MovieDetails {
   final String posterPath;
   final List<ProductionCompany> productionCompanies;
   final List<ProductionCountry> productionCountries;
-  final DateTime releaseDate;
+  final DateTime? releaseDate;
   final int revenue;
   final int runtime;
   final List<SpokenLanguage> spokenLanguages;
@@ -44,7 +44,7 @@ class MovieDetails {
     required this.posterPath,
     required this.productionCompanies,
     required this.productionCountries,
-    required this.releaseDate,
+    this.releaseDate,
     required this.revenue,
     required this.runtime,
     required this.spokenLanguages,
@@ -62,7 +62,7 @@ class MovieDetails {
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
-        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+        genres: List<String>.from(json["genres"].map((x) => x['name'])),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -78,7 +78,9 @@ class MovieDetails {
         productionCountries: List<ProductionCountry>.from(
             json["production_countries"]
                 .map((x) => ProductionCountry.fromJson(x))),
-        releaseDate: DateTime.parse(json["release_date"]),
+        releaseDate: json["release_date"].isNotEmpty
+            ? DateTime.parse(json["release_date"])
+            : null,
         revenue: json["revenue"],
         runtime: json["runtime"],
         spokenLanguages: List<SpokenLanguage>.from(
@@ -93,30 +95,15 @@ class MovieDetails {
       );
 }
 
-class Genre {
-  final int id;
-  final String name;
-
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
-        id: json["id"],
-        name: json["name"],
-      );
-}
-
 class ProductionCompany {
   final int id;
-  final String logoPath;
+  final String? logoPath;
   final String name;
   final String originCountry;
 
   ProductionCompany({
     required this.id,
-    required this.logoPath,
+    this.logoPath,
     required this.name,
     required this.originCountry,
   });
