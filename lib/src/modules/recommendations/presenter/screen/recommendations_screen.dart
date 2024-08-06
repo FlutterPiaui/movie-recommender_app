@@ -75,7 +75,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
               ),
             ),
             const SizedBox(height: 120),
-            Image.asset('assets/images/logo_app_gemini.png', height: 100),
+            Image.asset('assets/images/watching-movie.png', height: 120),
           ],
         ),
       ),
@@ -228,8 +228,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                         if (movie.error == null && movie.movies.isEmpty) {
                           return Container(
                             margin: const EdgeInsets.only(top: 10),
-                            padding:
-                                const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white12,
@@ -255,8 +254,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                         if (movie.error != null) {
                           return Container(
                             margin: const EdgeInsets.only(top: 10),
-                            padding:
-                                const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white12,
@@ -270,20 +268,18 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     BubbleSpecialThree(
-                                      text: movie.error ??
-                                          str.somethingWentWrong,
+                                      text:
+                                          movie.error ?? str.somethingWentWrong,
                                       color: theme.colorScheme.error,
                                       tail: true,
                                       isSender: false,
-                                      textStyle: theme.textTheme.bodyMedium!
-                                          .copyWith(
-                                        color:
-                                            theme.scaffoldBackgroundColor,
+                                      textStyle:
+                                          theme.textTheme.bodyMedium!.copyWith(
+                                        color: theme.scaffoldBackgroundColor,
                                       ),
                                     ),
                                     Container(
-                                      margin:
-                                          const EdgeInsets.only(right: 8.0),
+                                      margin: const EdgeInsets.only(right: 8.0),
                                       padding: const EdgeInsets.all(4),
                                       decoration: BoxDecoration(
                                         color: theme.colorScheme.error,
@@ -308,8 +304,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                                         },
                                         child: Icon(
                                           Icons.refresh,
-                                          color:
-                                              theme.scaffoldBackgroundColor,
+                                          color: theme.scaffoldBackgroundColor,
                                         ),
                                       ),
                                     ),
@@ -322,8 +317,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                         if (movie.movies.isEmpty) {
                           return Container(
                             margin: const EdgeInsets.only(top: 10),
-                            padding:
-                                const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white12,
@@ -365,7 +359,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                     ),
                   );
                 }
-      
+
                 return const SizedBox();
               },
             ),
