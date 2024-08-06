@@ -47,7 +47,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       kMovies,
       jsonEncode([..._movies.map((movie) => movie.toMap())]),
     );
-    emit(MoviesLoadingState());
+    emit(MoviesSuccessState(_movies));
   }
 
   Future<void> _onClearMovies(

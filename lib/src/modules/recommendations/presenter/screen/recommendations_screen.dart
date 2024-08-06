@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/movies/movies_event.dart';
+import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/search_movies/search_movies_state.dart';
 import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_list_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -39,8 +40,6 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding:
@@ -59,6 +58,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                 pause: const Duration(milliseconds: 100),
               ),
             ),
+            const SizedBox(height: 120),
             Image.asset('assets/images/logo_app_gemini.png', height: 100),
           ],
         ),
@@ -77,6 +77,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         ],
       ),
     );
+
     final textField = Expanded(
       child: TextFormField(
         cursorColor: theme.colorScheme.onSurface,
@@ -229,6 +230,12 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                 );
               }
 
+              return const SizedBox();
+            },
+          ),
+          BlocBuilder<SearchMoviesBloc, SearchMoviesState>(
+            builder: (context, state) {
+              if (state is SearchMoviesLoadingState) return loading;
               return const SizedBox();
             },
           ),
