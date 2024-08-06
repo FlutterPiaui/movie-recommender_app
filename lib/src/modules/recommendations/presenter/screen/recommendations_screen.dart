@@ -287,20 +287,19 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                                       ),
                                       child: GestureDetector(
                                         onTap: () {
-                                          // context
-                                          //     .read<SearchMoviesBloc>()
-                                          //     .add(
-                                          //       SearchMovies(movie.prompt),
-                                          //     );
-                                          // context.read<MoviesBloc>().add(
-                                          //       AddMovie(
-                                          //         MovieRequestData(
-                                          //           movies: [],
-                                          //           prompt: movie.prompt,
-                                          //           error: null,
-                                          //         ),
-                                          //       ),
-                                          //     );
+                                          context.read<SearchMoviesBloc>().add(
+                                                SearchMovies(movie.prompt),
+                                              );
+                                          context.read<MoviesBloc>().add(
+                                                AddMovie(
+                                                  MovieRequestData(
+                                                    movies: [],
+                                                    prompt: movie.prompt,
+                                                    error: null,
+                                                    isFailed: true,
+                                                  ),
+                                                ),
+                                              );
                                         },
                                         child: Icon(
                                           Icons.refresh,

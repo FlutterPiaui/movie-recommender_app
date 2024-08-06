@@ -27,7 +27,12 @@ class SearchMoviesBloc extends Bloc<SearchMoviesEvent, SearchMoviesState> {
         final error = failure.errorMessage;
         _moviesBloc.add(
           AddMovie(
-            MovieRequestData(movies: [], prompt: event.prompt, error: error),
+            MovieRequestData(
+              movies: [],
+              prompt: event.prompt,
+              error: error,
+              isFailed: true,
+            ),
           ),
         );
         emit(SearchMoviesErrorState(errorMessage: error));
@@ -35,7 +40,10 @@ class SearchMoviesBloc extends Bloc<SearchMoviesEvent, SearchMoviesState> {
       (movies) {
         _moviesBloc.add(
           AddMovie(
-            MovieRequestData(movies: movies, prompt: event.prompt),
+            MovieRequestData(
+              movies: movies,
+              prompt: event.prompt,
+            ),
           ),
         );
         emit(SearchMoviesSuccessState(movies));
