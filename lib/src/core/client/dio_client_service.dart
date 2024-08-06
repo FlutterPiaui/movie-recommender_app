@@ -7,6 +7,7 @@ class ApiClientDio implements ApiClient {
 
   ApiClientDio(this._dio) {
     _dio.options.baseUrl = 'https://api-l7ha4sjina-uc.a.run.app';
+    _dio.options.sendTimeout = const Duration(seconds: 40);
   }
 
   @override

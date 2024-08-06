@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:movie_recommender_app/src/core/client/api_client.dart';
 
 import 'package:movie_recommender_app/src/core/errors/errors.dart';
@@ -18,12 +19,13 @@ class RecommendationRepositoryImpl implements RecommendationRepository {
         data: {"prompt": prompt, "language": "português"},
       );
 
-      var movies =
-          (response.data as List).map((movie) => Movie.fromJson(movie)).toList();
+      var movies = (response.data as List)
+          .map((movie) => Movie.fromJson(movie))
+          .toList();
 
       return right(movies);
-    } catch (e) {
-      return left(GetFailureMovies(errorMessage: e.toString()));
+    } on DioException catch (e) {
+      return left(GetFailureMovies(errorMessage: e.message.toString()));
     }
   }
 }
