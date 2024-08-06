@@ -42,7 +42,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: border,
         focusedBorder: border.copyWith(
-          borderSide: const BorderSide(color: AppColors.onSecondary),
+          borderSide: const BorderSide(color: AppColors.shade),
         ),
       ),
     );
