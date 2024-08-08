@@ -1,4 +1,9 @@
 {
+    "moviesBasedTrueStories": "Películas basadas en hechos reales",
+    "oscarWinningMovies": "Películas que ganaron el Oscar",
+    "bestMoviesOf": "Mejores películas de",
+    "bestHorrorMovies": "Mejores películas de terror",
+    "bestComedyMovies": "Mejores películas de comedia",
     "noResultsForThisSearch": "¡No hay resultados para esta búsqueda!",
     "somethingWentWrong": "¡Algo ha salido mal!",
     "whatMovieWeGoWatch": "¿Qué estamos viendo hoy?",
