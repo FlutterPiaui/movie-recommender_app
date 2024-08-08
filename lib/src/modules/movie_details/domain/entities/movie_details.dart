@@ -26,6 +26,7 @@ class MovieDetails {
   final double voteAverage;
   final int voteCount;
   final String posterUrl;
+  final String trailerUrl;
 
   MovieDetails({
     required this.adult,
@@ -55,6 +56,7 @@ class MovieDetails {
     required this.voteAverage,
     required this.voteCount,
     required this.posterUrl,
+    required this.trailerUrl,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
@@ -92,6 +94,7 @@ class MovieDetails {
         voteAverage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
         posterUrl: json["poster_url"],
+        trailerUrl: json["trailerUrl"],
       );
 }
 
