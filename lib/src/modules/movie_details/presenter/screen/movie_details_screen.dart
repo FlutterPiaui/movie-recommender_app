@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_recommender_app/src/core/enums/sized_enum.dart';
+import 'package:movie_recommender_app/src/core/extensions/duration_formatter_extension.dart';
 import 'package:movie_recommender_app/src/core/extensions/ui/media_query_extensions.dart';
 import 'package:movie_recommender_app/src/core/extensions/ui/sizes_extensions.dart';
 import 'package:movie_recommender_app/src/core/shared/widgets/others/info_details_movie.dart';
@@ -92,10 +93,10 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       ),
                     ),
                     height: context.getHeight / 1.5,
-                    child: SingleChildScrollView(
+                    child: Padding(
                       padding: EdgeInsets.fromLTRB(
                         SizesEnum.md.getSize,
-                        0,
+                        SizesEnum.xl.getSize,
                         SizesEnum.md.getSize,
                         0,
                       ),
@@ -103,14 +104,15 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          StarRatingWidget(rating: (7.5 / 2).round()),
+                          StarRatingWidget(rating: (state.movie.voteAverage / 2).round()),
                           const SizedBox(height: 10),
                           Text(
                             state.movie.title,
                             style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           const SizedBox(height: 10),
                           SizedBox(
@@ -183,27 +185,27 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             ],
                           ),
                           const SizedBox(height: 20),
-                          const Row(
+                          Row(
                             children: [
-                              Text(
-                                '+16',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                              SizedBox(width: 8.0),
-                              Text(
+                              // Text(
+                              //   '',
+                              //   style: const TextStyle(
+                              //     color: Colors.white,
+                              //     fontSize: 16.0,
+                              //   ),
+                              // ),
+                              // const SizedBox(width: 8.0),
+                              const Text(
                                 '•',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16.0,
                                 ),
                               ),
-                              SizedBox(width: 8.0),
+                              const SizedBox(width: 8.0),
                               Text(
-                                '2h 15m',
-                                style: TextStyle(
+                                state.movie.runtime.toHoursMinutesFromMinutes(),
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16.0,
                                 ),
@@ -211,11 +213,16 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             ],
                           ),
                           const SizedBox(height: 20),
-                          Text(
-                            state.movie.overview,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
+                          SizedBox(
+                            height: 150,
+                            child: SingleChildScrollView(
+                              child: Text(
+                                state.movie.overview,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                              ),
                             ),
                           )
                         ],

@@ -25,7 +25,10 @@ class InfoDetailsMovie extends StatelessWidget {
           child: Text(
             textInfo!,
             style: const TextStyle(
-                fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 12,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
