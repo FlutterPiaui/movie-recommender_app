@@ -1,3 +1,5 @@
+import 'package:movie_recommender_app/src/modules/movie_details/domain/entities/recommendation_movie.dart';
+
 class MovieDetails {
   final bool adult;
   final String backdropPath;
@@ -27,6 +29,7 @@ class MovieDetails {
   final int voteCount;
   final String posterUrl;
   final String trailerUrl;
+  final List<RecommendationMovie> recommendations;
 
   MovieDetails({
     required this.adult,
@@ -57,6 +60,7 @@ class MovieDetails {
     required this.voteCount,
     required this.posterUrl,
     required this.trailerUrl,
+    this.recommendations = const [],
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
@@ -95,6 +99,7 @@ class MovieDetails {
         voteCount: json["vote_count"],
         posterUrl: json["poster_url"],
         trailerUrl: json["trailerUrl"],
+        recommendations: (json["recommendations"] as List).map((m) => RecommendationMovie.fromJson(m)).toList(),
       );
 }
 

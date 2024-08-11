@@ -131,7 +131,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
     final submitButton = Container(
       margin: const EdgeInsets.only(bottom: 8.0),
       child: IconButton(
-        onPressed: () async {
+        onPressed: () {
           final search = _controller.text;
           if (search.trim().isEmpty) return;
           context.read<SearchMoviesBloc>().add(SearchMovies(search));
@@ -163,6 +163,8 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
     );
 
     return Scaffold(
+      backgroundColor: theme.colorScheme.onSecondary,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: theme.colorScheme.onSecondary,
         elevation: 0,
@@ -187,6 +189,10 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
       ),
       bottomNavigationBar: Container(
         color: theme.colorScheme.onSecondary.withOpacity(0.9),
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+          top: 6,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -216,8 +222,6 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                 context.read<MoviesBloc>().add(Movies([]));
                 if (state is MoviesInitialState) {
                   return movieMessage;
-                } else if (state is MoviesLoadingState) {
-                  return loading;
                 } else if (state is MoviesSuccessState) {
                   return Expanded(
                     child: ListView.builder(
