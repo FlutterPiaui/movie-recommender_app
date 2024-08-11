@@ -9,7 +9,9 @@ import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc
 import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_list_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_recommendation_list_widget.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../core/theme/theme_provider.dart';
 import '../bloc/movies/movies_bloc.dart';
 import '../bloc/movies/movies_state.dart';
 import '../bloc/search_movies/search_movies_bloc.dart';
@@ -31,6 +33,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
   void initState() {
     context.read<MoviesBloc>().add(Movies([]));
     _controller.addListener(_updateCharCount);
+
     super.initState();
   }
 
@@ -49,6 +52,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = Theme.of(context);
     final str = AppLocalizations.of(context)!;
 
@@ -61,12 +65,17 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
               padding:
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16),
               child: AnimatedTextKit(
+                key: ValueKey<bool>(themeProvider.isDarkTheme),
                 animatedTexts: [
                   TypewriterAnimatedText(
                     str.whatMovieWeGoWatch,
                     textStyle: theme.textTheme.titleLarge!.copyWith(
                       fontSize: 36,
-                      color: theme.colorScheme.onTertiary,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.15,
+                      color: themeProvider.isDarkTheme
+                          ? Colors.white
+                          : Colors.black,
                     ),
                     speed: const Duration(milliseconds: 100),
                   ),
@@ -143,24 +152,6 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         icon: Icon(Icons.send, color: theme.colorScheme.onTertiary),
       ),
     );
-    final fieldWidSubmitedButton = Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.onSecondary.withOpacity(0.8),
-        borderRadius: BorderRadius.circular(100),
-      ),
-      height: 60,
-      width: MediaQuery.of(context).size.width * 0.9,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      margin: const EdgeInsets.all(20),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [textField, const SizedBox(width: 16), submitButton],
-        ),
-      ),
-    );
 
     return Scaffold(
       appBar: AppBar(
@@ -171,7 +162,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         title: Text(
           str.movieRecommendation,
           style: theme.textTheme.titleLarge!.copyWith(
-            color: theme.scaffoldBackgroundColor,
+            color: theme.appBarTheme.titleTextStyle!.color,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -180,9 +171,15 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
             onPressed: () => context.read<MoviesBloc>().add(ClearMovie()),
             icon: Icon(
               Icons.add,
-              color: theme.scaffoldBackgroundColor,
+              color: theme.colorScheme.onPrimary,
             ),
-          )
+          ),
+          Switch(
+            value: themeProvider.isDarkTheme,
+            onChanged: (value) {
+              themeProvider.toggleTheme();
+            },
+          ),
         ],
       ),
       bottomNavigationBar: Container(
@@ -192,7 +189,28 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
           children: [
             const SizedBox(height: 8),
             const MovieRecommendationListWidget(),
-            fieldWidSubmitedButton,
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.onSecondary.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              height: 60,
+              width: MediaQuery.of(context).size.width * 0.9,
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              margin: const EdgeInsets.all(20),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    textField,
+                    const SizedBox(width: 16),
+                    submitButton
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -229,7 +247,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                           color: theme.colorScheme.onSecondary,
                           tail: true,
                           textStyle: theme.textTheme.bodyMedium!.copyWith(
-                            color: theme.scaffoldBackgroundColor,
+                            color: theme.colorScheme.onPrimary,
                           ),
                         );
                         if (movie.error == null && movie.movies.isEmpty) {
@@ -238,7 +256,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white12,
+                              color: theme.colorScheme.surfaceContainer,
                             ),
                             child: Column(
                               children: [
@@ -264,7 +282,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white12,
+                              color: theme.colorScheme.surfaceContainer,
                             ),
                             child: Column(
                               children: [
@@ -326,7 +344,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: Colors.white12,
+                              color: theme.colorScheme.surfaceContainer,
                             ),
                             child: Column(
                               children: [
@@ -351,7 +369,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.white12,
+                            color: theme.colorScheme.surfaceContainer,
                           ),
                           child: Column(
                             children: [

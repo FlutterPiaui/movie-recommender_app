@@ -8,43 +8,85 @@ class AppTheme {
     borderRadius: BorderRadius.circular(100),
     borderSide: const BorderSide(color: AppColors.neutral),
   );
-  static ThemeData get theme {
-    return ThemeData(
-      colorScheme: const ColorScheme(
-        primary: AppColors.primary,
-        secondary: AppColors.secondary,
-        surface: AppColors.surface,
-        error: AppColors.error,
-        onPrimary: AppColors.onPrimary,
-        onSecondary: AppColors.onSecondary,
-        onSurface: AppColors.onSurface,
-        onError: AppColors.onError,
-        brightness: Brightness.light,
-        tertiary: AppColors.neutral,
-        onTertiary: AppColors.shade,
+  static final lightTheme = ThemeData(
+    appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(color: Colors.black),
+    ),
+    colorScheme: const ColorScheme(
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
+      surface: AppColors.surface,
+      error: AppColors.error,
+      onPrimary: Colors.black,
+      onSecondary: AppColors.backgroundDarkCard,
+      onSurface: AppColors.onSurface,
+      onError: AppColors.onError,
+      brightness: Brightness.light,
+      tertiary: AppColors.neutral,
+      onTertiary: Colors.black,
+      surfaceContainer: Color(0xFFEEEEEE),
+    ),
+    textTheme: const TextTheme(
+      displayLarge: AppTextStyles.headline1,
+      displayMedium: AppTextStyles.headline2,
+      displaySmall: AppTextStyles.headline3,
+      headlineMedium: AppTextStyles.headline4,
+      headlineSmall: AppTextStyles.headline5,
+      titleLarge: AppTextStyles.headline6,
+      titleMedium: AppTextStyles.subtitle1,
+      titleSmall: AppTextStyles.subtitle2,
+      bodyLarge: AppTextStyles.bodyText1,
+      bodyMedium: AppTextStyles.bodyText2,
+      labelLarge: AppTextStyles.button,
+      bodySmall: AppTextStyles.caption,
+      labelSmall: AppTextStyles.overline,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: border,
+      focusedBorder: border.copyWith(
+        borderSide: const BorderSide(color: AppColors.shade),
       ),
-      // fontFamily: GoogleFonts.nunito().fontFamily,
-      textTheme: const TextTheme(
-        displayLarge: AppTextStyles.headline1,
-        displayMedium: AppTextStyles.headline2,
-        displaySmall: AppTextStyles.headline3,
-        headlineMedium: AppTextStyles.headline4,
-        headlineSmall: AppTextStyles.headline5,
-        titleLarge: AppTextStyles.headline6,
-        titleMedium: AppTextStyles.subtitle1,
-        titleSmall: AppTextStyles.subtitle2,
-        bodyLarge: AppTextStyles.bodyText1,
-        bodyMedium: AppTextStyles.bodyText2,
-        labelLarge: AppTextStyles.button,
-        bodySmall: AppTextStyles.caption,
-        labelSmall: AppTextStyles.overline,
+    ),
+  );
+
+  static final darkTheme = ThemeData(
+    appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(color: Colors.white),
+    ),
+    colorScheme: const ColorScheme(
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
+      surface: AppColors.surface,
+      error: AppColors.error,
+      onPrimary: AppColors.onPrimary,
+      onSecondary: AppColors.onSecondary,
+      onSurface: AppColors.onSurface,
+      onError: AppColors.onError,
+      brightness: Brightness.light,
+      tertiary: AppColors.neutral,
+      onTertiary: Colors.white,
+      surfaceContainer: AppColors.backgroundDarkCard,
+    ),
+    textTheme: const TextTheme(
+      displayLarge: AppTextStyles.headline1,
+      displayMedium: AppTextStyles.headline2,
+      displaySmall: AppTextStyles.headline3,
+      headlineMedium: AppTextStyles.headline4,
+      headlineSmall: AppTextStyles.headline5,
+      titleLarge: AppTextStyles.headline6,
+      titleMedium: AppTextStyles.subtitle1,
+      titleSmall: AppTextStyles.subtitle2,
+      bodyLarge: AppTextStyles.bodyText1,
+      bodyMedium: AppTextStyles.bodyText2,
+      labelLarge: AppTextStyles.button,
+      bodySmall: AppTextStyles.caption,
+      labelSmall: AppTextStyles.overline,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: border,
+      focusedBorder: border.copyWith(
+        borderSide: const BorderSide(color: AppColors.shade),
       ),
-      inputDecorationTheme: InputDecorationTheme(
-        enabledBorder: border,
-        focusedBorder: border.copyWith(
-          borderSide: const BorderSide(color: AppColors.shade),
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }
