@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_recommender_app/src/core/enums/sized_enum.dart';
 import 'package:movie_recommender_app/src/core/extensions/ui/media_query_extensions.dart';
 import 'package:movie_recommender_app/src/core/extensions/ui/sizes_extensions.dart';
@@ -10,6 +11,7 @@ import 'package:movie_recommender_app/src/di/di_setup.dart';
 import '../bloc/movie_details_bloc.dart';
 import '../bloc/movie_details_event.dart';
 import '../bloc/movie_details_state.dart';
+import 'trailler_page_player.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   final String movieName;
@@ -132,14 +134,19 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           const SizedBox(height: 20),
                           Row(
                             children: [
-                              ElevatedButton(
+                              ElevatedButton.icon(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue,
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 25),
                                 ),
-                                child: const Text(
+                                icon: const Icon(
+                                  Icons.play_circle,
+                                  size: 25,
+                                  color: Colors.white,
+                                ),
+                                label: const Text(
                                   'Whatch Where?',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -147,31 +154,29 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 25),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.grey.withOpacity(0.5),
-                                  radius: 22,
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.download_outlined,
-                                      size: 25,
-                                      color: Colors.white,
-                                    ),
+                              const SizedBox(width: 10),
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  context.push(
+                                    '${PlayerYoutube.routeName}?urlMovie=${state.movie.trailerUrl}',
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 25,
                                   ),
                                 ),
-                              ),
-                              CircleAvatar(
-                                backgroundColor: Colors.grey.withOpacity(0.5),
-                                radius: 22,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.bookmark_add_outlined,
-                                    size: 25,
+                                icon: const Icon(
+                                  Icons.movie_filter,
+                                  size: 25,
+                                  color: Colors.white,
+                                ),
+                                label: const Text(
+                                  'Trailler',
+                                  style: TextStyle(
                                     color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),

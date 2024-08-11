@@ -8,6 +8,7 @@ import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/search_movies/search_movies_state.dart';
 import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_list_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_recommendation_list_widget.dart';
 
 import '../bloc/movies/movies_bloc.dart';
 import '../bloc/movies/movies_state.dart';
@@ -80,7 +81,6 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         ),
       ),
     );
-
     final loading = Padding(
       padding: const EdgeInsets.only(top: 16.0),
       child: Row(
@@ -128,7 +128,6 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         ),
       ),
     );
-
     final submitButton = Container(
       margin: const EdgeInsets.only(bottom: 8.0),
       child: IconButton(
@@ -144,15 +143,14 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
         icon: Icon(Icons.send, color: theme.colorScheme.onTertiary),
       ),
     );
-
-    final bottomNavigationBar = Container(
+    final fieldWidSubmitedButton = Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: theme.colorScheme.onSecondary..withOpacity(0.8),
+        color: theme.colorScheme.onSecondary.withOpacity(0.8),
         borderRadius: BorderRadius.circular(100),
       ),
       height: 60,
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.9,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       margin: const EdgeInsets.all(20),
       child: Padding(
@@ -187,8 +185,17 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
           )
         ],
       ),
-      bottomNavigationBar: bottomNavigationBar,
-      extendBody: true,
+      bottomNavigationBar: Container(
+        color: theme.colorScheme.onSecondary.withOpacity(0.9),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 8),
+            const MovieRecommendationListWidget(),
+            fieldWidSubmitedButton,
+          ],
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(

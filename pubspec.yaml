@@ -56,6 +56,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   mocktail:
   bloc_test: ^9.1.7
+  youtube_player_flutter: 8.1.0
 
 dev_dependencies:
   flutter_test:
