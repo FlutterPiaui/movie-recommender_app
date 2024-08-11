@@ -28,7 +28,7 @@ class MovieDetails {
   final double voteAverage;
   final int voteCount;
   final String posterUrl;
-  final String trailerUrl;
+  final String? trailerUrl;
   final List<RecommendationMovie> recommendations;
 
   MovieDetails({
@@ -59,7 +59,7 @@ class MovieDetails {
     required this.voteAverage,
     required this.voteCount,
     required this.posterUrl,
-    required this.trailerUrl,
+    this.trailerUrl,
     this.recommendations = const [],
   });
 
@@ -99,7 +99,9 @@ class MovieDetails {
         voteCount: json["vote_count"],
         posterUrl: json["poster_url"],
         trailerUrl: json["trailerUrl"],
-        recommendations: (json["recommendations"] as List).map((m) => RecommendationMovie.fromJson(m)).toList(),
+        recommendations: (json["recommendations"] as List)
+            .map((m) => RecommendationMovie.fromJson(m))
+            .toList(),
       );
 }
 

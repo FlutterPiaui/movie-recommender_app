@@ -187,31 +187,32 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                     ),
                                   ),
                                   const SizedBox(width: 10),
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      context.push(
-                                        '${PlayerYoutube.routeName}?urlMovie=${state.movie.trailerUrl}',
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blue,
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 25,
+                                  if (state.movie.trailerUrl != null)
+                                    ElevatedButton.icon(
+                                      onPressed: () {
+                                        context.push(
+                                          '${PlayerYoutube.routeName}?urlMovie=${state.movie.trailerUrl}',
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 25,
+                                        ),
                                       ),
-                                    ),
-                                    icon: const Icon(
-                                      Icons.movie_filter,
-                                      size: 25,
-                                      color: Colors.white,
-                                    ),
-                                    label: Text(
-                                      'Trailler',
-                                      style:
-                                          theme.textTheme.titleSmall!.copyWith(
+                                      icon: const Icon(
+                                        Icons.movie_filter,
+                                        size: 25,
                                         color: Colors.white,
                                       ),
+                                      label: Text(
+                                        'Trailler',
+                                        style: theme.textTheme.titleSmall!
+                                            .copyWith(
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
-                                  ),
                                 ],
                               ),
                               const SizedBox(height: 10),
