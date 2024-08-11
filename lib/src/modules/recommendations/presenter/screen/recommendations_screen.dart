@@ -92,13 +92,15 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
     );
     final loading = Padding(
       padding: const EdgeInsets.only(top: 16.0),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           LoadingAnimationWidget.fourRotatingDots(
             color: theme.colorScheme.onTertiary,
             size: 40,
           ),
+          const SizedBox(height: 10),
+          Text(str.loading_search),
         ],
       ),
     );

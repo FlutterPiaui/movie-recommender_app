@@ -13,5 +13,6 @@
   "newVersionAvailable": "Nueva versión disponible",
   "install": "Instale",
   "skip": "Saltar",
-  "availableOnPlatforms": "Disponible en las siguientes plataformas:"
+  "availableOnPlatforms": "Disponible en las siguientes plataformas:",
+  "loading_search": "Buscamos las mejores recomendaciones."
 }
