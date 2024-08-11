@@ -6,9 +6,9 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/domain/entities/movie_request_data.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/movies/movies_event.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/search_movies/search_movies_state.dart';
-import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_list_widget.dart';
+import 'package:movie_recommender_app/src/modules/recommendations/presenter/screen/widgets/movie_list_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:movie_recommender_app/src/presentation/home/screen/widgets/movie_recommendation_list_widget.dart';
+import 'package:movie_recommender_app/src/modules/recommendations/presenter/screen/widgets/movie_recommendation_list_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/theme/theme_provider.dart';
