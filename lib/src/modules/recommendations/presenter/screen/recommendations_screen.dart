@@ -175,6 +175,17 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
             ),
           ),
           Switch(
+            thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
+                (Set<WidgetState> states) {
+              if (states.contains(WidgetState.selected)) {
+                return const Icon(
+                  Icons.dark_mode,
+                  color: Colors.black,
+                );
+              } else {
+                return const Icon(Icons.light_mode);
+              }
+            }),
             value: themeProvider.isDarkTheme,
             onChanged: (value) {
               themeProvider.toggleTheme();
