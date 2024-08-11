@@ -1,3 +1,5 @@
+import 'package:movie_recommender_app/src/modules/movie_details/domain/entities/recommendation_movie.dart';
+
 class MovieDetails {
   final bool adult;
   final String backdropPath;
@@ -26,8 +28,9 @@ class MovieDetails {
   final double voteAverage;
   final int voteCount;
   final String posterUrl;
-  final String trailerUrl;
-  final List<Providers> providersList;
+  final String? trailerUrl;
+  final List<RecommendationMovie> recommendations;
+  final List<Providers>? providersList;
 
   MovieDetails({
     required this.adult,
@@ -57,8 +60,9 @@ class MovieDetails {
     required this.voteAverage,
     required this.voteCount,
     required this.posterUrl,
-    required this.trailerUrl,
-    required this.providersList,
+    this.trailerUrl,
+    this.recommendations = const [],
+    this.providersList,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
@@ -66,7 +70,9 @@ class MovieDetails {
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
-        genres: List<String>.from(json["genres"].map((x) => x['name'])),
+        genres: List<String>.from(json["genres"].map((x) => x['name']))
+            .toSet()
+            .toList(),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -104,11 +110,16 @@ class MovieDetails {
         voteCount: json["vote_count"],
         posterUrl: json["poster_url"],
         trailerUrl: json["trailerUrl"],
-        providersList: List<Providers>.from(
-          json["providers"].map(
-            (x) => Providers.fromJson(x),
-          ),
-        ),
+        recommendations: (json["recommendations"] as List)
+            .map((m) => RecommendationMovie.fromJson(m))
+            .toList(),
+        providersList: json["providers"] == null
+            ? null
+            : List<Providers>.from(
+                json["providers"].map(
+                  (x) => Providers.fromJson(x),
+                ),
+              ),
       );
 }
 
