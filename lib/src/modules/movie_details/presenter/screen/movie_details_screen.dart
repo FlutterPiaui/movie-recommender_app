@@ -8,7 +8,6 @@ import 'package:movie_recommender_app/src/core/extensions/ui/sizes_extensions.da
 import 'package:movie_recommender_app/src/core/shared/widgets/others/info_details_movie.dart';
 import 'package:movie_recommender_app/src/core/shared/widgets/others/star_rating_widget.dart';
 import 'package:movie_recommender_app/src/di/di_setup.dart';
-import 'package:movie_recommender_app/src/modules/movie_details/domain/entities/movie_details.dart';
 import 'package:movie_recommender_app/src/utils/dialog_utils.dart';
 
 import '../bloc/movie_details_bloc.dart';
