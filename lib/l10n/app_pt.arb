@@ -14,5 +14,6 @@
     "welcome": "Bem vindo",
     "newVersionAvailable": "Nova versão disponível",
     "install": "Instalar",
-    "skip": "Pular"
+    "skip": "Pular",
+    "availableOnPlatforms": "Disponível nas seguintes plataformas:"
 }

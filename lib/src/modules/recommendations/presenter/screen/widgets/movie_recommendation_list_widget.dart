@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../modules/recommendations/domain/entities/movie_request_data.dart';
-import '../../../../modules/recommendations/presenter/bloc/movies/movies_bloc.dart';
-import '../../../../modules/recommendations/presenter/bloc/movies/movies_event.dart';
-import '../../../../modules/recommendations/presenter/bloc/search_movies/search_movies_bloc.dart';
-import '../../../../modules/recommendations/presenter/bloc/search_movies/search_movies_event.dart';
+import '../../../domain/entities/movie_request_data.dart';
+import '../../bloc/movies/movies_bloc.dart';
+import '../../bloc/movies/movies_event.dart';
+import '../../bloc/search_movies/search_movies_bloc.dart';
+import '../../bloc/search_movies/search_movies_event.dart';
 
 class MovieRecommendationListWidget extends StatelessWidget {
   const MovieRecommendationListWidget({super.key});
