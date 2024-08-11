@@ -30,7 +30,7 @@ class MovieDetails {
   final String posterUrl;
   final String? trailerUrl;
   final List<RecommendationMovie> recommendations;
-  final List<Providers> providersList;
+  final List<Providers>? providersList;
 
   MovieDetails({
     required this.adult,
@@ -62,7 +62,7 @@ class MovieDetails {
     required this.posterUrl,
     this.trailerUrl,
     this.recommendations = const [],
-    required this.providersList,
+    this.providersList,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
@@ -70,7 +70,9 @@ class MovieDetails {
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
-        genres: List<String>.from(json["genres"].map((x) => x['name'])),
+        genres: List<String>.from(json["genres"].map((x) => x['name']))
+            .toSet()
+            .toList(),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -111,11 +113,13 @@ class MovieDetails {
         recommendations: (json["recommendations"] as List)
             .map((m) => RecommendationMovie.fromJson(m))
             .toList(),
-        providersList: List<Providers>.from(
-          json["providers"].map(
-            (x) => Providers.fromJson(x),
-          ),
-        ),
+        providersList: json["providers"] == null
+            ? null
+            : List<Providers>.from(
+                json["providers"].map(
+                  (x) => Providers.fromJson(x),
+                ),
+              ),
       );
 }
 

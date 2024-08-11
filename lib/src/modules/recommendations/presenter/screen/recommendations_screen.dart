@@ -154,7 +154,7 @@ class _RecommendationsScreenState extends State<RecommendationsScreen> {
     );
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.onSecondary,
+        backgroundColor: theme.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: theme.colorScheme.onSecondary,

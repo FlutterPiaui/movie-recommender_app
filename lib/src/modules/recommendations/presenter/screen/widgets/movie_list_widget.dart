@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/domain/entities/movie.dart';
-import 'package:movie_recommender_app/src/presentation/home/screen/widgets/recommendation_movie_widget.dart';
+import 'recommendation_movie_widget.dart';
 
 class MovieListWidget extends StatelessWidget {
   const MovieListWidget(this.movies, {super.key});
