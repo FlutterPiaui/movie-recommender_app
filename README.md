@@ -10,4 +10,4 @@ We leverage Google Cloud Functions to handle the submission of the search prompt
 - Our own backend is built on Node.js with TypeScript, ensuring robust and scalable performance. [Backend repo code](https://github.com/FlutterPiaui/cloud_funtions).
 
 
-Link APK 🔗 - https://l1nk.dev/FroCd
+Link APK 🔗 - https://l1nk.dev/lvsWm
