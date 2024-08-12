@@ -87,10 +87,10 @@ class MovieRecommendationItem {
 
   static List<MovieRecommendationItem> recommendations(BuildContext context) {
     final str = AppLocalizations.of(context)!;
-    final year = DateTime.now().year;
+
     return [
       MovieRecommendationItem(
-        name: '${str.bestMoviesOf} $year',
+        name: '${str.bestMoviesOf} 2023',
         icon: 'assets/icons/favorites.png',
       ),
       MovieRecommendationItem(
