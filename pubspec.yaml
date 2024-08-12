@@ -57,6 +57,7 @@ dependencies:
   mocktail:
   bloc_test: ^9.1.7
   youtube_player_flutter: 8.1.0
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

@@ -8,11 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_recommender_app/firebase_options.dart';
-import 'package:movie_recommender_app/src/core/theme/app_theme.dart';
 import 'package:movie_recommender_app/src/di/di_setup.dart';
 import 'package:movie_recommender_app/src/modules/recommendations/presenter/bloc/search_movies/search_movies_bloc.dart';
 import 'package:movie_recommender_app/src/routes/routes.dart';
+import 'package:provider/provider.dart';
 
+import 'src/core/theme/app_theme.dart';
+import 'src/core/theme/theme_provider.dart';
 import 'src/modules/recommendations/presenter/bloc/movies/movies_bloc.dart';
 
 void main() async {
@@ -63,16 +65,21 @@ class MyApp extends StatelessWidget {
         BlocProvider<MoviesBloc>(
           create: (BuildContext context) => getIt.get<MoviesBloc>(),
         ),
+        ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        routerDelegate: router.routerDelegate,
-        routeInformationProvider: router.routeInformationProvider,
-        routeInformationParser: router.routeInformationParser,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        theme: AppTheme.theme,
-      ),
+      child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routerDelegate: router.routerDelegate,
+          routeInformationProvider: router.routeInformationProvider,
+          routeInformationParser: router.routeInformationParser,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          theme: themeProvider.isDarkTheme
+              ? AppTheme.darkTheme
+              : AppTheme.lightTheme,
+        );
+      }),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_recommender_app/src/core/shared/widgets/others/provider_info_dialog.dart';
+import 'package:movie_recommender_app/src/modules/movie_details/domain/entities/movie_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,7 +19,8 @@ class DialogUtils {
     }
   }
 
-  static void showInAppUpdateDialog({required BuildContext context, required bool skipInstall}) {
+  static void showInAppUpdateDialog(
+      {required BuildContext context, required bool skipInstall}) {
     final str = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     showAdaptiveDialog(
@@ -54,6 +57,18 @@ class DialogUtils {
             ),
           ],
         );
+      },
+    );
+  }
+
+  static void showProviderInfoDialog({
+    required BuildContext context,
+    required List<Providers> providersList,
+  }) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ProviderInfoDialog(providersList: providersList);
       },
     );
   }

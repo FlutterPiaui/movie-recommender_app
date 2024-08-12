@@ -26,6 +26,8 @@ class RecommendationRepositoryImpl implements RecommendationRepository {
       return right(movies);
     } on DioException catch (e) {
       return left(GetFailureMovies(errorMessage: e.message.toString()));
+    } on HttpServiceError catch (e) {
+      return left(GetFailureMovies(errorMessage: e.message.toString()));
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'package:movie_recommender_app/src/modules/movie_details/domain/entities/recommendation_movie.dart';
+
 class MovieDetails {
   final bool adult;
   final String backdropPath;
@@ -26,7 +28,9 @@ class MovieDetails {
   final double voteAverage;
   final int voteCount;
   final String posterUrl;
-  final String trailerUrl;
+  final String? trailerUrl;
+  final List<RecommendationMovie> recommendations;
+  final List<Providers>? providersList;
 
   MovieDetails({
     required this.adult,
@@ -56,7 +60,9 @@ class MovieDetails {
     required this.voteAverage,
     required this.voteCount,
     required this.posterUrl,
-    required this.trailerUrl,
+    this.trailerUrl,
+    this.recommendations = const [],
+    this.providersList,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
@@ -64,7 +70,9 @@ class MovieDetails {
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"],
-        genres: List<String>.from(json["genres"].map((x) => x['name'])),
+        genres: List<String>.from(json["genres"].map((x) => x['name']))
+            .toSet()
+            .toList(),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -75,18 +83,25 @@ class MovieDetails {
         popularity: json["popularity"]?.toDouble(),
         posterPath: json["poster_path"],
         productionCompanies: List<ProductionCompany>.from(
-            json["production_companies"]
-                .map((x) => ProductionCompany.fromJson(x))),
+          json["production_companies"].map(
+            (x) => ProductionCompany.fromJson(x),
+          ),
+        ),
         productionCountries: List<ProductionCountry>.from(
-            json["production_countries"]
-                .map((x) => ProductionCountry.fromJson(x))),
+          json["production_countries"].map(
+            (x) => ProductionCountry.fromJson(x),
+          ),
+        ),
         releaseDate: json["release_date"].isNotEmpty
             ? DateTime.parse(json["release_date"])
             : null,
         revenue: json["revenue"],
         runtime: json["runtime"],
         spokenLanguages: List<SpokenLanguage>.from(
-            json["spoken_languages"].map((x) => SpokenLanguage.fromJson(x))),
+          json["spoken_languages"].map(
+            (x) => SpokenLanguage.fromJson(x),
+          ),
+        ),
         status: json["status"],
         tagline: json["tagline"],
         title: json["title"],
@@ -95,6 +110,16 @@ class MovieDetails {
         voteCount: json["vote_count"],
         posterUrl: json["poster_url"],
         trailerUrl: json["trailerUrl"],
+        recommendations: (json["recommendations"] as List)
+            .map((m) => RecommendationMovie.fromJson(m))
+            .toList(),
+        providersList: json["providers"] == null
+            ? null
+            : List<Providers>.from(
+                json["providers"].map(
+                  (x) => Providers.fromJson(x),
+                ),
+              ),
       );
 }
 
@@ -151,5 +176,20 @@ class SpokenLanguage {
         englishName: json["english_name"],
         iso6391: json["iso_639_1"],
         name: json["name"],
+      );
+}
+
+class Providers {
+  final String logo;
+  final String providerName;
+
+  Providers({
+    required this.logo,
+    required this.providerName,
+  });
+
+  factory Providers.fromJson(Map<String, dynamic> json) => Providers(
+        logo: json["logo_path"],
+        providerName: json["provider_name"],
       );
 }
