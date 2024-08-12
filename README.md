@@ -7,4 +7,4 @@ Our application uses the Gemini API to recommend movies based on an initial prom
 We leverage Google Cloud Functions to handle the submission of the search prompt. Once the prompt is received, the Gemini API processes it and selects a list of movies that best align with the provided criteria.
 ## Other integrations
 - The Movie Database (TMDB) API: Used to display movies and TVshows data.
-- Our own backend is built on Node.js with TypeScript, ensuring robust and scalable performance.
+- Our own backend is built on Node.js with TypeScript, ensuring robust and scalable performance. [Backend repo code](https://github.com/FlutterPiaui/cloud_funtions).
