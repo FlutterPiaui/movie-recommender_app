@@ -1,4 +1,6 @@
 {
+    "whereWatch": "¿Dónde verlo?",
+    "recommendedMovies": "Películas recomendadas",
   "moviesBasedTrueStories": "Películas basadas en hechos reales",
   "oscarWinningMovies": "Películas que ganaron el Oscar",
   "bestMoviesOf": "Mejores películas de",
@@ -13,5 +15,6 @@
   "newVersionAvailable": "Nueva versión disponible",
   "install": "Instale",
   "skip": "Saltar",
-  "availableOnPlatforms": "Disponible en las siguientes plataformas:"
+  "availableOnPlatforms": "Disponible en las siguientes plataformas:",
+  "loading_search": "Buscamos las mejores recomendaciones."
 }

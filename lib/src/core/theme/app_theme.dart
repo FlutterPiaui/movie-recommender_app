@@ -12,6 +12,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(color: Colors.black),
     ),
+    scaffoldBackgroundColor: AppColors.surface,
     colorScheme: const ColorScheme(
       primary: AppColors.primary,
       secondary: AppColors.secondary,
@@ -23,7 +24,7 @@ class AppTheme {
       onError: AppColors.onError,
       brightness: Brightness.light,
       tertiary: AppColors.neutral,
-      onTertiary: Colors.black,
+      onTertiary: AppColors.onSurface,
       surfaceContainer: Color(0xFFEEEEEE),
     ),
     textTheme: const TextTheme(
@@ -53,6 +54,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(color: Colors.white),
     ),
+    scaffoldBackgroundColor: AppColors.onSurface,
     colorScheme: const ColorScheme(
       primary: AppColors.primary,
       secondary: AppColors.secondary,

@@ -1,4 +1,6 @@
 {
+    "whereWatch": "Where to watch?",
+    "recommendedMovies": "Recommended movies",
   "moviesBasedTrueStories": "Movies based on true stories",
   "oscarWinningMovies": "Oscar-winning movies",
   "bestMoviesOf": "Best movies of ",
@@ -7,11 +9,12 @@
   "noResultsForThisSearch": "No results for this search!",
   "somethingWentWrong": "Something went wrong!",
   "whatMovieWeGoWatch": "What are we watching today?",
-  "movieName": "Movie name",
+  "movieName": "Movies similar to inside out",
   "movieRecommendation": "CineMatch",
   "welcome": "Welcome",
   "newVersionAvailable": "New version available",
   "install": "Install",
   "skip": "Skip",
-  "availableOnPlatforms": "Available on the following platforms:"
+  "availableOnPlatforms": "Available on the following platforms:",
+  "loading_search": "We are looking for the best recommendations..."
 }
