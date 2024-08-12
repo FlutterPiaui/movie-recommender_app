@@ -27,7 +27,16 @@ class RecommendationRepositoryImpl implements RecommendationRepository {
     } on DioException catch (e) {
       return left(GetFailureMovies(errorMessage: e.message.toString()));
     } on HttpServiceError catch (e) {
-      return left(GetFailureMovies(errorMessage: e.message.toString()));
+      if (e.message.contains('[bad response]')) {
+        return left(
+          GetFailureMovies(
+            errorMessage:
+                'Oops! Looks like we couldn\'t find a movie recommendation for you this time. Why not try another search? We\'re here to help you find your next great movie adventure!',
+          ),
+        );
+      } else {
+        return left(GetFailureMovies(errorMessage: e.message.toString()));
+      }
     }
   }
 }
